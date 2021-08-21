@@ -1,0 +1,44 @@
+﻿@model List<TesteDrivin.Models.ArquivoViewModel>
+@{
+    ViewData["Title"] = "ListarArquivo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Listar Arquivo</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Nome do Arquivo
+            </th>
+            <th>
+                E-mail
+            </th>
+            <th>Download</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <span>@item.Nome</span>
+                </td>
+                @foreach (var email in item.Emails)
+                {
+                    <td>
+                        <span> @email</span>
+                    </td>
+                }
+                <td>
+                    <button class="btn btn-outline-light">
+                        <img src="~/imagens/cloud-arrow-down.svg" />
+                        @Html.ActionLink("Download", "BaixarArquivo", new { nomeArquivo = item.Nome })
+                    </button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

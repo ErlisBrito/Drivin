@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewData["Title"] = "Upload de arquivo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div name="container">
+    @if (ViewBag.ArquivoInvalido != null)
+    {
+        <span>@ViewBag.ArquivoInvalido</span>
+    }
+
+    @using (Html.BeginForm("ListarEmail", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div class="">
+          <div class="form-group">
+            <input type="file" name="files" id="files" /><br />
+            <button type="submit" class="btn btn-outline-light">
+              
+                <img src="~/imagens/cloud-arrow-up.svg" />
+            </button>
+          </div>
+        </div>
+        
+       
+    }
+</div>
